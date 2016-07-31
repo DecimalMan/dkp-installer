@@ -1,0 +1,8 @@
+[submodule "zlib"]
+	path = zlib
+	url = https://github.com/decimalman/zlib.git
+	branch = dkp-installer
+[submodule "sfpng"]
+	path = sfpng
+	url = https://github.com/decimalman/sfpng.git
+	branch = dkp-installer
