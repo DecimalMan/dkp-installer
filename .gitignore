@@ -1,1 +1,4 @@
 *.o
+/libs
+/obj
+/update-binary
