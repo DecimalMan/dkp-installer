@@ -24,8 +24,9 @@ SRC += zlib/inftrees.c zlib/trees.c zlib/zutil.c
 CFLAGS += -DHAVE_HIDDEN -DZLIB_CONST
 CFLAGS += -DDYNAMIC_CRC_TABLE -DUNALIGNED_OK
 
-SRC += zlib/contrib/inflateneon/inflate_fast_copy_neon.s
-CFLAGS += -D__ARM_HAVE_NEON
+# NEON inflate is marginally slower than scalar
+#SRC += zlib/contrib/inflateneon/inflate_fast_copy_neon.s
+#CFLAGS += -D__ARM_HAVE_NEON
 
 # minizip
 SRC += zlib/contrib/minizip/unzip.c zlib/contrib/minizip/ioapi.c
