@@ -71,8 +71,10 @@ int main(int argc, char **argv) {
 
 	pthread_mutex_unlock(&thread_lock);
 
+#ifndef __ANDROID__
 	mod_prio(threads[THREAD_ZIMAGE], SCHED_BATCH);
 	mod_prio(threads[THREAD_SYSTEM], SCHED_BATCH);
+#endif
 
 	pthread_attr_destroy(&th_attr);
 	ret = generate_bootimg();
@@ -85,10 +87,12 @@ int main(int argc, char **argv) {
 	return -ret;
 
 abort_cancel_and_die:
+#ifndef __ANDROID__
 	rprint("Aborting threads");
 	for (i++; i < THREAD_COUNT; i++) {
 		pthread_cancel(threads[i]);
 	}
+#endif
 just_die:
 	rprint("Installation failed");
 	return -ret;

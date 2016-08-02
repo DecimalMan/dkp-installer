@@ -385,7 +385,9 @@ void *generate_ramdisk(void *arg) {
 
 	file_list_init(&read_files);
 	pthread_create(&decomp_th, NULL, decompress_thread, (void *)&decomp);
+#ifndef __ANDROID__
 	mod_prio(decomp_th, SCHED_BATCH);
+#endif
 
 	/* Start compression */
 	comp.zalloc = Z_NULL;
